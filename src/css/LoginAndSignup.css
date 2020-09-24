@@ -1,0 +1,197 @@
+/*뒤로가기*/
+.signBack {
+  position: absolute;
+  color: white;
+  font-size: 2em;
+  top: 15px;
+  left: 10px;
+  background-color: rgba( 255, 255, 255, 0 );
+  cursor : pointer;
+  border: none;
+  margin-left: 0.6em;
+  z-index: 1;
+  outline: 0;
+}
+
+.signBack:hover{
+  opacity: 0.8;
+}
+
+/*애니메이션박스*/
+.newShootingStarAnimationBox1 {
+  position: relative;
+  height:40%;
+}
+
+.loginShootingStar {
+  top: 65%;
+  height: 50%
+}
+
+/*인풋박스*/
+.signInputBox{
+  position: relative;
+  height: 20%;
+}
+
+.IDBOX {
+  position: absolute;
+  width: 90%;
+  top:20%;
+  left:50%;
+  transform: translateX(-50%);
+  font-size: 1em;
+  border: none;
+  border-bottom: 1px solid #AFB8CE;
+  background: transparent;
+  color: white;
+  outline : 0;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  padding-left: 50px;
+}
+
+.PWBOX{
+  position: absolute;
+  top:60%;
+  width: 90%;
+  left:50%;
+  transform: translateX(-50%);
+  font-size: 1em;
+  border: none;
+  border-bottom: 1px solid #AFB8CE;
+  background: transparent;
+  color: white;
+  outline : 0;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  padding-left: 50px;
+}
+
+.IDBOX::placeholder, .PWBOX::placeholder{
+  font-style: italic;
+  font-size: 0.9em;
+  opacity: 20%;
+  color: white
+}
+
+@keyframes wobble-horizontal {
+	16.65% {
+		left: 39%
+	}
+
+	33.3% {
+		left: 31%
+	}
+
+	49.95% {
+		left: 37%
+	}
+
+	66.6% {
+		left: 33%
+	}
+
+	83.25% {
+		left: 36%
+	}
+
+	100% {
+		left: 35%
+	}
+}
+
+.wobble-horizontal {
+  display: inline-block;
+  animation-name: wobble-horizontal;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+}
+
+.mail{
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  top:18%;
+  left:5%;
+}
+
+.lock{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top:53%;
+  left:5%;
+}
+
+/*버튼 박스*/
+.signBox{
+  position: relative;
+  height: 45%;
+}
+
+#forgotBtn{
+  position: absolute;
+  left :50%;
+  transform: translateX(-50%);
+  cursor : pointer;
+  color: rgba(175, 184, 206, 0.5);
+}
+
+#forgotBtn:hover{
+  opacity: 0.8;
+}
+
+.newLoginBtn{
+  position: absolute;
+  top:15%;
+  left:50%;
+  transform: translateX(-50%);
+  height:20%;
+  width: 80%;
+  background: #AFB8CE;
+  border-radius: 34.5px;
+  cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.newLoginBtn:hover{
+  opacity: 0.8;
+}
+
+.newLoginText{
+  position: absolute;
+  color: #303345;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.3em;
+}
+
+.socialLoginBtn{
+  position: absolute;
+  top: 42%;
+  left:50%;
+  transform: translateX(-50%);
+  height:20%;
+  width: 80%;
+  background: #1C69FF;
+  border-radius: 34.5px;
+  cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.socialLoginBtn:hover{
+  opacity: 0.8;
+}
+
+.socialLoginText{
+  position: absolute;
+  width:80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.3em;
+  text-align: center;
+}

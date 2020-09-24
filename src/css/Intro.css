@@ -1,0 +1,273 @@
+/*애니메이션박스*/
+#introShootingStarAnimationBox {
+  position: relative;
+  height: 55%;
+}
+
+.shootingStarAnimation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 40%;
+  width: 40%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#star {
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  z-index: 1;
+}
+
+.allSatellite {
+  position: absolute;
+  background: #ffffff;
+  box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
+  border-radius: 70%;
+  animation-name: satellite;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
+
+.s1 {
+  width: 9px;
+  height: 9px;
+  top: 75%;
+  left: 50%;
+}
+
+.s2 {
+  width: 7px;
+  height: 7px;
+  top: 10%;
+  left: 25%;
+  animation-delay: 800ms;
+}
+
+.s3 {
+  width: 5px;
+  height: 5px;
+  top: 40%;
+  left: 35%;
+  animation-delay: 500ms;
+}
+
+.s4 {
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  left: 10%;
+  animation-delay: 400ms;
+}
+
+.s5 {
+  width: 5px;
+  height: 5px;
+  top: 85%;
+  left: 80%;
+  animation-delay: 200ms;
+}
+
+@keyframes allSatellite {
+  0% {
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.25);
+  }
+
+  20% {
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.25);
+  }
+
+  40% {
+    box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.25);
+  }
+
+  60% {
+    box-shadow: 0px 0px 10px 4px rgba(255, 255, 255, 0.25);
+  }
+
+  80% {
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.25);
+  }
+
+  100% {
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.25);
+  }
+}
+
+.meteor {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  top: -40%;
+  left: -30%;
+  position: relative;
+  transform-origin: 100% 0;
+  animation: star-ani 2s infinite ease-out;
+  animation-direction: normal;
+  opacity: 0;
+}
+
+.meteor:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  border: 2px solid #f00;
+  border-width: 2px 150px 2px 150px;
+  border-color: transparent transparent transparent #fff;
+  transform: rotate(-45deg) translate3d(1px, -1px, 0);
+  transform-origin: 0% 100%;
+  animation: shooting-ani 1s infinite ease-out;
+  animation-direction: normal;
+}
+
+.s6 {
+  top: 10%;
+  left: -30%;
+  background: #fff;
+  animation-delay: 1.8s;
+}
+
+.s6:after {
+  border-color: transparent transparent transparent #fff;
+  animation-delay: 1.8s;
+}
+
+.s7 {
+  top: -10%;
+  left: 20%;
+  background: #fff;
+  animation-delay: 4.5s;
+}
+
+.s7:after {
+  border-color: transparent transparent transparent #fff;
+  animation-delay: 4.5s;
+}
+
+.s8 {
+  top: 0%;
+  left: 50%;
+  background: #fff;
+  animation-delay: 5.8s;
+}
+
+.s8:after {
+  border-color: transparent transparent transparent #fff;
+  animation-delay: 5.8s;
+}
+
+@keyframes shooting-ani {
+  0% {
+  }
+  50% {
+    transform: scale(1) rotate(-45deg) translate(0px, 0px);
+  }
+  100% {
+    transform: scale(1) rotate(-45deg) translate(0px, -1px);
+  }
+}
+
+@keyframes star-ani {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(0) translate3d(-35px, 35px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) rotate(0) translate3d(-70px, 70px, 0);
+  }
+}
+
+/*버튼박스*/
+#introBtnBox {
+  position: relative;
+  height: 45%;
+}
+
+#guestBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 20%;
+  width: 80%;
+  background: #afb8ce;
+  border-radius: 34.5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#guestBtn:hover {
+  opacity: 0.8;
+}
+
+#guestText {
+  position: absolute;
+  color: #303345;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3em;
+}
+
+#loginBtn {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 20%;
+  width: 80%;
+  background: #4b4f6c;
+  border-radius: 34.5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#loginBtn:hover {
+  opacity: 0.8;
+}
+
+#loginText {
+  position: absolute;
+  color: #afb8ce;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3em;
+}
+
+#signupBtn {
+  position: absolute;
+  height: 10%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+#signupBtn:hover {
+  opacity: 0.8;
+}
+
+#signupText {
+  position: relative;
+  color: #afb8ce;
+  font-size: 1.2em;
+}
+
+#signupLine {
+  position: relative;
+  width: 50px;
+  border: 1px solid #afb8ce;
+}

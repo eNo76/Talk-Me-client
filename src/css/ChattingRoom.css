@@ -1,0 +1,209 @@
+#chat-wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+}
+
+#chat-header {
+  grid-row: span 2;
+}
+
+/*뒤로가기 버튼*/
+#chattingRoomBack {
+  position: relative;
+  color: white;
+  font-size: 2em;
+  top: 15px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  border: none;
+  margin-left: 0.6em;
+  border-radius: 70%;
+  z-index: 1;
+  outline: 0;
+}
+
+#chattingRoomBack:hover{
+  opacity: 0.8;
+}
+
+/*타이틀*/
+#chattingRoomTitle {
+  position: relative;
+  width: 100%;
+  height: 10%;
+  background-color: #171521;
+  box-shadow: 0px 10px 4px rgba(18, 18, 18, 0.25);
+}
+
+#headTitle {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+/*메시지*/
+#messageBox {
+  grid-row: span 7;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: scroll;
+  display: grid;
+  grid-auto-rows: max-content;
+  grid-gap: 30px;
+  padding: 0px 30px;
+}
+
+#messageBox::-webkit-scrollbar {
+  display: none;
+}
+
+.questionBox,
+.answerBox {
+  position: relative;
+  transform: scale(0);
+  transform-origin: 0 0;
+  animation: bounce 500ms linear both;
+  border-radius: 13px;
+  max-width: 300px;
+  word-break: break-all;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.questionBox {
+  background: #4a4f6c;
+  justify-self: self-start;
+  animation-delay: 0.8s;
+}
+
+.questionText,
+.answerText {
+  padding: 15px 30px;
+  font-size: 1.3em;
+}
+
+.questionBottom {
+  position: absolute;
+  top: 100%;
+  left: -5%;
+  transform: translateY(-100%);
+  width: 0px;
+  height: 0px;
+  border-top: 30px solid transparent;
+  border-right: 30px solid #4a4f6c;
+}
+
+.answerBox {
+  justify-self: self-end;
+  background: #d1d1d3;
+}
+
+.answerText {
+  color: #4a4f6c;
+}
+
+.answerBottom {
+  position: absolute;
+  top: 100%;
+  right: -5%;
+  transform: translateY(-100%);
+  width: 0px;
+  height: 0px;
+  border-top: 30px solid transparent;
+  border-left: 30px solid #d1d1d3;
+}
+
+/*입력 창*/
+#inputBox {
+  grid-row: span 1;
+  position: relative;
+}
+#answerInput {
+  position: absolute;
+  width: 90%;
+  height: 80%;
+  background: #d1d1d3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 31.5px;
+  outline: 0;
+  top:75%;
+  left: 50%;
+  transform: translate(-50%,-80%);
+  color: #4a4f6c;
+  font-size: 1.2em;
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 50px;
+  overflow-x: hidden;
+  border: none;
+}
+
+#submitBtn {
+  position: absolute;
+  top:14%;
+  width: 15%;
+  height: 70%;
+  left: 80%;
+  cursor: pointer;
+  animation: transform 0.5s ease-in;
+}
+
+#submitBtn:hover {
+  transform: translateY(-2px) translateX(3px);
+}
+
+#submitBtn:active {
+  opacity: 0.5;
+}
+
+#img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes bounce {
+  0% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
