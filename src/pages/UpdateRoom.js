@@ -1,22 +1,22 @@
-import React from "react";
-import Question from "../component/Question";
-import { withRouter } from "react-router-dom";
-import "../css/CreateAndUpdate.css";
+import React from 'react';
+import Question from '../component/Question';
+import { withRouter } from 'react-router-dom';
+import '../css/CreateAndUpdate.css';
 
 class UpdateRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      title: "",
-      description: "",
+      id: '',
+      title: '',
+      description: '',
       questions: [],
       descByte: 0,
     };
   }
   // 뒤로가기 클릭 시 roomlist page로 이동
   backBtn() {
-    this.props.history.push("/roomlist");
+    this.props.history.push('/roomlist');
   }
   // state의 key와 value를 입력받아 변경
   changeState(key, value) {
@@ -41,7 +41,7 @@ class UpdateRoom extends React.Component {
   }
   // id를 입력받아 해당 id를 key로 가지는 질문 삭제
   deleteQuestion(id) {
-    let questions = this.state.questions.filter((question) => {
+    let questions = this.state.questions.filter(question => {
       if (question.id !== id) {
         return question;
       }
@@ -53,14 +53,14 @@ class UpdateRoom extends React.Component {
   // event target을 입력 받아 value의 byte 수를 return
   byteCheck(target) {
     let byte = 0;
-    target.value.split("").forEach((char) => {
+    target.value.split('').forEach(char => {
       if (char.charCodeAt(0) <= 0x00007f) {
         byte = byte + 1;
       } else if (char.charCodeAt(0) <= 0x00ffff) {
         byte = byte + 2;
       }
     });
-    if (target.id === "descBox") {
+    if (target.id === 'descBox') {
       this.setState({
         descByte: byte,
       });
@@ -70,11 +70,11 @@ class UpdateRoom extends React.Component {
   // save 버튼 클릭 시 해당 방의 정보를 수정하는 API 요청 후 roomlist page로 이동
   saveBtn() {
     if (this.state.title && this.state.questions.length) {
-      let questionsText = this.state.questions.map((question) => question.text);
-      fetch("/room", {
-        method: "PATCH",
+      let questionsText = this.state.questions.map(question => question.text);
+      fetch('/room', {
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           roomId: this.state.id,
@@ -82,37 +82,37 @@ class UpdateRoom extends React.Component {
           description: this.state.description,
           questions: questionsText,
         }),
-        credentials: "include",
+        credentials: 'include',
       })
-        .then((res) => {
+        .then(res => {
           if (res.ok) {
-            this.props.history.push("/roomlist");
+            this.props.history.push('/roomlist');
           }
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
     } else if (!this.state.title) {
-      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      document.querySelector('#mobile').classList.add('wobble-horizontal');
       window.setTimeout(() => {
-        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+        document.querySelector('#mobile').classList.remove('wobble-horizontal');
       }, 1000);
     } else if (!this.state.questions.length) {
-      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      document.querySelector('#mobile').classList.add('wobble-horizontal');
       window.setTimeout(() => {
-        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+        document.querySelector('#mobile').classList.remove('wobble-horizontal');
       }, 1000);
     }
   }
   // path의 params를 확인하여 해당 방의 정보를 가져오는 API 요청
   componentDidMount() {
     fetch(`/room/${this.props.match.params.roomId}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
     })
-      .then((res) => res.json())
-      .then((room) => {
+      .then(res => res.json())
+      .then(room => {
         this.setState({
           id: room.id,
           title: room.title,
@@ -120,12 +120,12 @@ class UpdateRoom extends React.Component {
           questions: room.questions,
         });
         let target = {
-          id: "descBox",
+          id: 'descBox',
           value: room.description,
         };
         this.byteCheck(target);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -144,11 +144,12 @@ class UpdateRoom extends React.Component {
             <span>title: </span>
             <input
               id="titleBox"
+              autoComplete="off"
               type="text"
               value={this.state.title}
-              onChange={(e) => {
+              onChange={e => {
                 if (this.byteCheck(e.target) <= 56) {
-                  this.changeState("title", e.target.value);
+                  this.changeState('title', e.target.value);
                 } else {
                   e.target.value = this.state.title;
                 }
@@ -160,9 +161,9 @@ class UpdateRoom extends React.Component {
             <textarea
               id="descBox"
               value={this.state.description}
-              onChange={(e) => {
+              onChange={e => {
                 if (this.byteCheck(e.target) < 200) {
-                  this.changeState("description", e.target.value);
+                  this.changeState('description', e.target.value);
                 } else {
                   e.target.value = this.state.description;
                 }
@@ -172,7 +173,7 @@ class UpdateRoom extends React.Component {
           </div>
           <div>
             <ul id="questionList">
-              {this.state.questions.map((question) => (
+              {this.state.questions.map(question => (
                 <Question
                   key={question.id}
                   question={question}
@@ -187,10 +188,10 @@ class UpdateRoom extends React.Component {
               autoComplete="off"
               autoCorrect="off"
               spellCheck="off"
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
+              onKeyPress={e => {
+                if (e.key === 'Enter') {
                   this.addQuestion(e.target.value);
-                  e.target.value = "";
+                  e.target.value = '';
                 }
               }}
             ></input>

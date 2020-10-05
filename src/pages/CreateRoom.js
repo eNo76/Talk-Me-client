@@ -1,14 +1,14 @@
-import React from "react";
-import Question from "../component/Question";
-import { withRouter } from "react-router-dom";
-import "../css/CreateAndUpdate.css";
+import React from 'react';
+import Question from '../component/Question';
+import { withRouter } from 'react-router-dom';
+import '../css/CreateAndUpdate.css';
 
 class CreateRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       questions: [],
       descByte: 0,
     };
@@ -16,10 +16,10 @@ class CreateRoom extends React.Component {
   // 뒤로가기 클릭 시 intro page로 이동
   backBtn() {
     if (this.props.isLogin) {
-      this.props.history.push("/roomlist");
+      this.props.history.push('/roomlist');
     } else {
-      this.props.handlingIsLogin("isGuest");
-      this.props.history.push("/intro");
+      this.props.handlingIsLogin('isGuest');
+      this.props.history.push('/intro');
     }
   }
   // state의 key와 value를 입력받아 변경
@@ -45,7 +45,7 @@ class CreateRoom extends React.Component {
   }
   // id를 입력 받아 해당 id를 key로 가지는 질문 삭제
   deleteQuestion(id) {
-    let questions = this.state.questions.filter((question) => {
+    let questions = this.state.questions.filter(question => {
       if (question.id !== id) {
         return question;
       }
@@ -57,14 +57,14 @@ class CreateRoom extends React.Component {
   // event target을 입력 받아 value의 byte 수를 return
   byteCheck(target) {
     let byte = 0;
-    target.value.split("").forEach((char) => {
+    target.value.split('').forEach(char => {
       if (char.charCodeAt(0) <= 0x00007f) {
         byte = byte + 1;
       } else if (char.charCodeAt(0) <= 0x00ffff) {
         byte = byte + 2;
       }
     });
-    if (target.id === "descBox") {
+    if (target.id === 'descBox') {
       this.setState({
         descByte: byte,
       });
@@ -88,43 +88,43 @@ class CreateRoom extends React.Component {
 
       if (this.props.isLogin) {
         // 유저일 때
-        fetch("/room", {
-          method: "POST",
+        fetch('/room', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             title: this.state.title,
             description: this.state.description,
             questions: questions[1],
           }),
-          credentials: "include",
+          credentials: 'include',
         })
-          .then((res) => res.json())
-          .then((data) => {
+          .then(res => res.json())
+          .then(data => {
             this.props.history.push({
-              pathname: "/chattingroom",
+              pathname: '/chattingroom',
               id: data.room.id,
             });
           })
-          .catch((err) => console.log(err));
+          .catch(err => console.log(err));
       } else {
         // 게스트일 때
         this.props.history.push({
-          pathname: "/chattingroom",
+          pathname: '/chattingroom',
           title: this.state.title,
           questions: questions[0],
         });
       }
     } else if (!this.state.title) {
-      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      document.querySelector('#mobile').classList.add('wobble-horizontal');
       window.setTimeout(() => {
-        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+        document.querySelector('#mobile').classList.remove('wobble-horizontal');
       }, 1000);
     } else if (!this.state.questions.length) {
-      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      document.querySelector('#mobile').classList.add('wobble-horizontal');
       window.setTimeout(() => {
-        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+        document.querySelector('#mobile').classList.remove('wobble-horizontal');
       }, 1000);
     }
   }
@@ -145,10 +145,11 @@ class CreateRoom extends React.Component {
             <span>title : </span>
             <input
               id="titleBox"
+              autoComplete="off"
               type="text"
-              onChange={(e) => {
+              onChange={e => {
                 if (this.byteCheck(e.target) <= 56) {
-                  this.changeState("title", e.target.value);
+                  this.changeState('title', e.target.value);
                 } else {
                   e.target.value = this.state.title;
                 }
@@ -159,9 +160,9 @@ class CreateRoom extends React.Component {
             <div>description : </div>
             <textarea
               id="descBox"
-              onChange={(e) => {
+              onChange={e => {
                 if (this.byteCheck(e.target) < 200) {
-                  this.changeState("description", e.target.value);
+                  this.changeState('description', e.target.value);
                 } else {
                   e.target.value = this.state.description;
                 }
@@ -172,7 +173,7 @@ class CreateRoom extends React.Component {
 
           <div>
             <ul id="questionList">
-              {this.state.questions.map((question) => (
+              {this.state.questions.map(question => (
                 <Question
                   key={question.id}
                   question={question}
@@ -187,12 +188,12 @@ class CreateRoom extends React.Component {
               autoCorrect="off"
               spellCheck="off"
               placeholder="+ add question"
-              onFocus={(e) => (e.target.placeholder = "")}
-              onBlur={(e) => (e.target.placeholder = "+ add question")}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
+              onFocus={e => (e.target.placeholder = '')}
+              onBlur={e => (e.target.placeholder = '+ add question')}
+              onKeyPress={e => {
+                if (e.key === 'Enter') {
                   this.addQuestion(e.target.value);
-                  e.target.value = "";
+                  e.target.value = '';
                 }
               }}
             ></input>
